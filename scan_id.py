@@ -337,6 +337,11 @@ def main():
             # 4. Show live window
             cv2.imshow(window_name, display_frame)
 
+            # Check if window was closed via titlebar 'X'
+            if cv2.getWindowProperty(window_name, cv2.WND_PROP_VISIBLE) < 1:
+                print("Window closed by user.")
+                break
+
     except KeyboardInterrupt:
         print("\nExiting by user interrupt...")
     except Exception as exc:
